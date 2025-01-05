@@ -1,7 +1,17 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { useState } from "react";
 
 const Portfolio = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  // Filter projects based on active category
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter(project => 
+        project.tags.some(tag => tag === activeCategory)
+      );
+
   return (
     <div className="container mx-auto px-4 py-24 mt-16">
       <motion.div
@@ -21,7 +31,12 @@ const Portfolio = () => {
             key={category}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="px-6 py-2 rounded-full bg-muted hover:bg-primary hover:text-white transition-colors"
+            className={`px-6 py-2 rounded-full transition-colors ${
+              activeCategory === category 
+                ? "bg-primary text-white" 
+                : "bg-muted hover:bg-primary hover:text-white"
+            }`}
+            onClick={() => setActiveCategory(category)}
           >
             {category}
           </motion.button>
@@ -30,7 +45,7 @@ const Portfolio = () => {
 
       {/* Portfolio Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 20 }}
