@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Users, Trophy, Target, Clock } from "lucide-react";
 
 const About = () => {
   return (
@@ -9,11 +10,13 @@ const About = () => {
         transition={{ duration: 0.5 }}
         className="max-w-4xl mx-auto"
       >
+        {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-xl text-gray-600">Your Partner in Digital Success</p>
         </div>
 
+        {/* Story & Mission */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -44,6 +47,7 @@ const About = () => {
           </motion.div>
         </div>
 
+        {/* Values */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,6 +65,57 @@ const About = () => {
             ))}
           </div>
         </motion.div>
+
+        {/* Team Section */}
+        <section className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">Our Team</h2>
+            <p className="text-gray-600">Meet the experts behind our success</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4"></div>
+                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                <p className="text-primary mb-2">{member.position}</p>
+                <p className="text-gray-600">{member.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="bg-muted rounded-2xl p-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-gray-600">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
       </motion.div>
     </div>
   );
@@ -82,6 +137,31 @@ const values = [
     description: "We focus on delivering measurable results that matter.",
     icon: "🎯"
   }
+];
+
+const team = [
+  {
+    name: "John Smith",
+    position: "CEO & Founder",
+    description: "Digital marketing veteran with 15+ years of experience."
+  },
+  {
+    name: "Sarah Johnson",
+    position: "Head of Strategy",
+    description: "Expert in developing comprehensive digital strategies."
+  },
+  {
+    name: "Michael Chen",
+    position: "Technical Director",
+    description: "Leads our technical SEO and web development initiatives."
+  }
+];
+
+const stats = [
+  { value: "10+", label: "Years Experience" },
+  { value: "500+", label: "Projects Completed" },
+  { value: "50+", label: "Team Members" },
+  { value: "95%", label: "Client Retention" }
 ];
 
 export default About;

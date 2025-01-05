@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Rocket, Target, Users, BarChart2, Layout, MessageSquare } from "lucide-react";
 
 const Services = () => {
   return (
@@ -10,53 +10,59 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Digital Marketing Services</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Elevate your online presence with our comprehensive digital marketing solutions tailored to your business needs
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Digital Marketing Services</h1>
+          <p className="text-xl text-gray-600">
+            Comprehensive digital solutions to help your business grow and succeed online
           </p>
         </motion.div>
+      </section>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="text-primary text-4xl mb-6">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              <ul className="space-y-3">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start space-x-2">
-                    <Check className="text-primary flex-shrink-0 mt-1" size={18} />
-                    <span className="text-gray-600">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+      {/* Services Grid */}
+      <section className="bg-muted py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                  <service.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <ul className="space-y-3">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start space-x-2">
+                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="bg-muted py-20 mt-20">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We follow a proven methodology to ensure your digital marketing success
-            </p>
+            <p className="text-xl text-gray-600">How we deliver results for your business</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -66,12 +72,13 @@ const Services = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-6">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
               </motion.div>
             ))}
@@ -80,22 +87,27 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-secondary text-white rounded-2xl p-12 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Grow Your Business?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Let's discuss how our digital marketing services can help you achieve your business goals
-          </p>
-          <button className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-colors inline-flex items-center group">
-            Get Started
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-          </button>
-        </motion.div>
+      <section className="bg-secondary text-white py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Transform Your Digital Presence?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Let's create a customized digital marketing strategy for your business
+            </p>
+            <button className="inline-flex items-center px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-opacity-90 transition-colors">
+              Schedule a Consultation
+              <ArrowRight className="ml-2" size={20} />
+            </button>
+          </motion.div>
+        </div>
       </section>
     </div>
   );
@@ -104,67 +116,73 @@ const Services = () => {
 const services = [
   {
     title: "Search Engine Optimization (SEO)",
-    description: "Boost your website's visibility and rank higher in search results with our data-driven SEO strategies.",
-    icon: "🔍",
+    description: "Improve your website's visibility and rank higher in search results",
+    icon: Target,
     features: [
-      "Keyword Research & Analysis",
+      "Keyword Research & Strategy",
       "On-Page SEO Optimization",
       "Technical SEO Audit",
-      "Link Building Strategy"
+      "Link Building",
+      "Local SEO"
     ]
   },
   {
     title: "Social Media Marketing",
-    description: "Build a strong social media presence and engage with your audience across multiple platforms.",
-    icon: "📱",
+    description: "Build and engage your audience across social platforms",
+    icon: Users,
     features: [
-      "Content Strategy & Planning",
+      "Platform Strategy",
+      "Content Creation",
       "Community Management",
       "Social Media Analytics",
-      "Engagement Optimization"
+      "Influencer Partnerships"
     ]
   },
   {
     title: "Content Marketing",
-    description: "Create compelling content that resonates with your target audience and drives conversions.",
-    icon: "✍️",
+    description: "Create valuable content that attracts and converts your target audience",
+    icon: MessageSquare,
     features: [
-      "Content Strategy Development",
-      "Blog Writing & Management",
-      "Content Distribution",
-      "Performance Tracking"
+      "Content Strategy",
+      "Blog Writing",
+      "Email Marketing",
+      "Video Content",
+      "Content Distribution"
     ]
   },
   {
     title: "Website Design & Development",
-    description: "Get a stunning, responsive website that delivers an exceptional user experience.",
-    icon: "💻",
+    description: "Create stunning, responsive websites that convert visitors",
+    icon: Layout,
     features: [
       "Custom Website Design",
       "Mobile Optimization",
-      "Speed Optimization",
-      "SEO-Friendly Development"
+      "E-commerce Solutions",
+      "Website Maintenance",
+      "Speed Optimization"
     ]
   },
   {
     title: "Facebook Advertising",
-    description: "Reach your ideal customers with targeted Facebook ad campaigns that deliver results.",
-    icon: "📢",
+    description: "Reach your ideal customers with targeted ad campaigns",
+    icon: BarChart2,
     features: [
       "Campaign Strategy",
-      "Audience Targeting",
       "Ad Creative Design",
-      "Performance Optimization"
+      "Audience Targeting",
+      "Performance Tracking",
+      "A/B Testing"
     ]
   },
   {
-    title: "Analytics & Reporting",
-    description: "Track your success with detailed analytics and actionable insights.",
-    icon: "📊",
+    title: "Performance Marketing",
+    description: "Drive measurable results through data-driven campaigns",
+    icon: Rocket,
     features: [
-      "Custom Dashboard Setup",
-      "Monthly Performance Reports",
-      "Data Analysis",
+      "Conversion Rate Optimization",
+      "Landing Page Design",
+      "Marketing Automation",
+      "Analytics & Reporting",
       "ROI Tracking"
     ]
   }
