@@ -141,17 +141,17 @@ const values = [
 
 const team = [
   {
-    name: "John Smith",
+    name: "Rushikesh Bhosale",
     position: "CEO & Founder",
     description: "Digital marketing veteran with 15+ years of experience."
   },
   {
-    name: "Sarah Johnson",
+    name: "Sumit Anarase",
     position: "Head of Strategy",
     description: "Expert in developing comprehensive digital strategies."
   },
   {
-    name: "Michael Chen",
+    name: "Priyanka Patil",
     position: "Technical Director",
     description: "Leads our technical SEO and web development initiatives."
   }

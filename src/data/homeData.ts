@@ -46,17 +46,17 @@ export const stats = [
 export const testimonials = [
   {
     content: "Working with this team has transformed our online presence. Our sales have increased by 200% since implementing their strategies.",
-    name: "Sarah Johnson",
-    position: "CEO, TechStart"
+    name: "Rajesh Sharma",
+    position: "CEO, TechVision India"
   },
   {
     content: "The level of expertise and dedication they bring to the table is unmatched. They truly care about our success.",
-    name: "Michael Chen",
-    position: "Marketing Director, GrowthCo"
+    name: "Priya Patel",
+    position: "Marketing Director, InnovateHub"
   },
   {
     content: "Their data-driven approach and transparent communication make them the perfect partner for our business.",
-    name: "Emily Rodriguez",
-    position: "Founder, EcoStyle"
+    name: "Amit Deshmukh",
+    position: "Founder, DigiGrowth Solutions"
   }
 ];
