@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Spline from '@splinetool/react-spline';
 import { HeroSection } from '../components/home/HeroSection';
 import { ServicesSection } from '../components/home/ServicesSection';
 import { features, stats, testimonials } from '../data/homeData';
@@ -14,6 +15,49 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      
+      {/* 3D Model Section */}
+      <section className="py-20 bg-muted relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2"
+            >
+              <h2 className="text-4xl font-bold text-secondary mb-6">
+                Innovative Digital Solutions
+              </h2>
+              <p className="text-lg text-secondary/80 mb-8">
+                We leverage cutting-edge technology and creative design to deliver exceptional digital experiences that set your business apart.
+              </p>
+              <Link
+                to="/services"
+                className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors group"
+              >
+                Explore Services
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 h-[500px]"
+            >
+              <Spline
+                scene="https://prod.spline.design/xXzm6dWz3J6Kw2Mp/scene.splinecode"
+                className="w-full h-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <ServicesSection />
 
       {/* Why Choose Us Section */}
